@@ -11,7 +11,6 @@ L.Icon.Default.mergeOptions({
 });
 
 
-
 // Component điều khiển bản đồ
 const FlyToLocation = ({ center }) => {
   const map = useMap(); // Lấy đối tượng bản đồ từ hook
@@ -25,7 +24,7 @@ const MapComponent = () => {
   const [opacity, setOpacity] = useState(1); // Độ mờ bản đồ
   const [locationName, setLocationName] = useState(
     "Bệnh viện Quận 7, TP.HCM"
-  ); // Tên vị trí mặc định
+  ); 
 
   const handleSearch = async (event) => {
     event.preventDefault();
@@ -136,6 +135,7 @@ const MapComponent = () => {
         </Marker>
       </MapContainer>
     </div>
+    
   );
 };
 
