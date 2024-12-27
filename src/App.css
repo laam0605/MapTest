@@ -55,3 +55,61 @@ form button {
   border-radius: 3px;
   cursor: pointer;
 }
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 10px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar-menu {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1; 
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-item {
+  margin: 0 15px;
+  font-size: 16px;
+  color: black;
+  cursor: pointer;
+}
+
+.navbar-item:hover {
+  text-decoration: underline;
+  color: #007bff;
+}
+
+
+.navbar-help {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  margin-left: auto; 
+}
+
+.navbar-help span {
+  border: 1px solid black;
+  padding: 5px 8px;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  margin-right: 30px;
+  color: orange;
+  border-color: orange;
+}
+

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
+import "./App.css"; // Import CSS
 
 // Định nghĩa icon Leaflet nếu cần
 delete L.Icon.Default.prototype._getIconUrl;
@@ -9,7 +10,6 @@ L.Icon.Default.mergeOptions({
   iconUrl: require("leaflet/dist/images/marker-icon.png"),
   shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 });
-
 
 // Component điều khiển bản đồ
 const FlyToLocation = ({ center }) => {
@@ -24,7 +24,7 @@ const MapComponent = () => {
   const [opacity, setOpacity] = useState(1); // Độ mờ bản đồ
   const [locationName, setLocationName] = useState(
     "Bệnh viện Quận 7, TP.HCM"
-  ); 
+  );
 
   const handleSearch = async (event) => {
     event.preventDefault();
@@ -63,14 +63,21 @@ const MapComponent = () => {
 
   return (
     <div style={{ height: "100vh" }}>
-      <style>
-        {`
-          .leaflet-bottom.leaflet-left {
-            left: 10px;
-            bottom: 10px;
-          }
-        `}
-      </style>
+      {/* Navbar */}
+      <nav className="navbar">
+        <ul className="navbar-menu">
+          <li className="navbar-item">Bản đồ</li>
+          <li className="navbar-item">Danh sách bản đồ</li>
+          <li className="navbar-item">Tin tức</li>
+          <li className="navbar-item">Dự án</li>
+          <li className="navbar-item">Lịch sử giá</li>
+          <li className="navbar-item">Tính lãi suất</li>
+        </ul>
+        <div className="navbar-help">
+          <span>?</span>
+        </div>
+      </nav>
+
 
       <form
         onSubmit={handleSearch}
@@ -78,8 +85,8 @@ const MapComponent = () => {
           position: "absolute",
           zIndex: 1000,
           padding: "10px",
-          left: "50px", // Thêm khoảng cách từ cạnh phải 20px
-          top: "10px", // Vị trí cách mép trên 10px
+          left: "50px",
+          top: "70px", 
         }}
       >
         <input
@@ -93,12 +100,12 @@ const MapComponent = () => {
         </button>
       </form>
 
-
+      {/* Thanh điều chỉnh độ mờ bản đồ*/}
       <div
         style={{
           position: "absolute",
           zIndex: 1000,
-          top: "50px",
+          top: "110px",
           right: "10px",
           backgroundColor: "white",
           padding: "10px",
@@ -119,10 +126,11 @@ const MapComponent = () => {
         <span>{Math.round(opacity * 100)}%</span>
       </div>
 
+      {/* Bản đồ */}
       <MapContainer
         center={center}
         zoom={14}
-        style={{ height: "100%", width: "100%" }}
+        style={{ height: "100%", width: "100%", marginTop: "50px" }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -135,7 +143,6 @@ const MapComponent = () => {
         </Marker>
       </MapContainer>
     </div>
-    
   );
 };
 
